@@ -1,0 +1,13 @@
+table {
+	margin: 5mm;
+	border-collapse: collapse;
+}
+thead, tbody {
+	border-bottom: 1px solid gray;
+	border-top: 1px solid gray;
+}
+th, td {
+	padding: 1mm;
+	padding-right: 3mm;
+	padding-left:  3mm;
+}
