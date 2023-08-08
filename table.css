@@ -1,13 +1,20 @@
 table {
-	margin: 5mm;
+	margin-top: 3mm;
 	border-collapse: collapse;
+	width: calc(100% - 3mm);
+	border: 1px solid gray;
+	box-sizing: border-box;
 }
 thead, tbody {
 	border-bottom: 1px solid gray;
 	border-top: 1px solid gray;
 }
 th, td {
+	text-align: center;
 	padding: 1mm;
 	padding-right: 3mm;
 	padding-left:  3mm;
+}
+tr:not(:last-child) {
+	border-bottom: 1px solid gainsboro;
 }

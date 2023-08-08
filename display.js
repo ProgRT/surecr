@@ -3,7 +3,7 @@ export function sumaryTable(recr){
 	var tblHead = document.createElement("thead");
 	table.append(tblHead);
 
-	for(var header of ['PEP', 'P<sub>motrice</sub>', 'C<sub>st</sub>', 'Ind. de stress']){
+	for(var header of ['PEP', 'P<sub>motrice</sub>', 'C<sub>st</sub>', 'Ind. de stress', "Commentaire"]){
 		let th = document.createElement('th');
 		th.innerHTML = header;
 		tblHead.append(th);

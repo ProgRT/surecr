@@ -1,25 +1,6 @@
 <!DOCTYPE html>
 <link rel='stylesheet' href='table.css' />
-<style>
-	html {
-		font-family: sans-serif;
-		font-size: 10pt;
-	}
-</style>
+<link rel='stylesheet' href='main.css' />
+<link rel='stylesheet' media="print" href='print.css' />
 
-<script type='module'>
-	import { parseRecr } from './surecr.js';
-	import {sumaryTable} from './display.js';
-	import * as Plot from "https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/+esm";
-
-
-	fetch('recr1.txt')
-		.then(responce=>responce.text())
-		.then(text=>{
-			const recr = parseRecr(text);
-			var p = Plot.boxY(recr, {x: "PEProunded", y: "Cst"})
-				.plot({grid:true});
-			document.body.append(p);
-			document.body.append(sumaryTable(recr));
-		});
-</script>
+<script type='module' src="app.js"></script>
