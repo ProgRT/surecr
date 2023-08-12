@@ -4,6 +4,14 @@ table {
 	width: calc(100% - 3mm);
 	border: 1px solid gray;
 	box-sizing: border-box;
+	caption-side: bottom;
+}
+table sup {
+	font-weight: normal;
+	font-size: 75%;
+}
+caption {
+	margin-top: 2mm;
 }
 thead, tbody {
 	border-bottom: 1px solid gray;

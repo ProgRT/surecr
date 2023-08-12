@@ -4,6 +4,22 @@ export function parseRecr(text) {
   [headerText, dataText] = text.split("[DATA]");
   var dataLines = dataText.split("\n");
 
+  // ================================================
+  // Parsing the informations relative to the dataset
+  // ================================================
+
+  var infos = headerText
+    .trim()
+    .split("\n")
+    .slice(1)
+    .filter((d) => /===/.test(d) == false)
+    .map((l) => l.split("\t"))
+    .map((t) => {
+      return { Param: t[0], Value: t[1] };
+    });
+
+  var dataDate = parseSuDate(infos.filter((d) => d.Param == "Date")[0].Value);
+
   // ====================
   // Creating fields list
   // ====================
@@ -36,7 +52,8 @@ export function parseRecr(text) {
   var data = dataLines.slice(2, dataLines.length - 1).map(parseDataLine);
   const startTime = parseSuTime(data[0].Durée);
   data = data.map((d) => {
-    d.Durée = parseSuTime(d.Durée, startTime);
+    //d.Durée = parseSuTime(d.Durée, startTime);
+    d.Durée = parseSuTime(d.Durée, dataDate);
     return d;
   });
 
@@ -47,25 +64,9 @@ export function parseRecr(text) {
 	
   var sumary = sumarize(data);
   Object.defineProperty(data, "sumary", { value: sumary });
-
-  // ================================================
-  // Parsing the informations relative to the dataset
-  // ================================================
-
-  var infos = headerText
-    .trim()
-    .split("\n")
-    .slice(1)
-    .filter((d) => /===/.test(d) == false)
-    .map((l) => l.split("\t"))
-    .map((t) => {
-      return { Param: t[0], Value: t[1] };
-    });
-
-  var dataDate = parseSuDate(infos.filter((d) => d.Param == "Date")[0].Value);
-
   Object.defineProperty(data, "infos", { value: infos });
   Object.defineProperty(data, "date", { value: dataDate });
+
 
   // =====================================
   // And then returning the parsed dataset
@@ -74,11 +75,17 @@ export function parseRecr(text) {
   return data;
 }
 
-function parseSuTime(str, starttime){
+function parseSuTime(str, d){
   var h, m, s, time;
   [h, m, s] = str.split(":");
+	/*
   time = 3600 * h + 60 * m + 1 * s;
   time -= isNaN(starttime) ? 0 : starttime;
+	*/
+	time = new Date(d);
+	time.setHours(h);
+	time.setMinutes(m);
+	time.setSeconds(s);
   return time;
 }
 
@@ -89,6 +96,7 @@ function parseSuDate(string) {
   [j, M, a] = dString.split("/");
   [h, m, s] = tString.split(":");
   return new Date(`20${a}/${M}/${j} ${h}:${m}:${s}`);
+  //return new Date(`20${a}/${M}/${j}`);
 }
 
 function sumarize(dataset) {

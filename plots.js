@@ -5,9 +5,9 @@ export function timePlot(recr, param){
 			grid:true,
 			width: 8*96,
 			height: 1.7*96,
-			x: {label: "Temps (min)"},
+			x: {label: "Temps", type: "utc", tickFormat: x=>x.toLocaleTimeString("fr-ca", {timeStyle: "short"})},
 			marks: [
-				Plot.line(recr, {x: d=>d.Durée / 60, y: param}),
+				Plot.line(recr, {x: d=>d.Durée, y: param}),
 			]
 		});
 }

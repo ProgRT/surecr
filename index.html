@@ -3,4 +3,40 @@
 <link rel='stylesheet' href='main.css' />
 <link rel='stylesheet' media="print" href='print.css' />
 
-<script type='module' src="app.js"></script>
+<script type='module'>
+	import {parseRecr} from './surecr.js';
+	import {report} from "./report.js";
+
+	document.body.innerHTML = "<h1>Titration de la PEP</h1>";
+	var filesSelector = document.createElement('input');
+	filesSelector.type = 'file';
+	filesSelector.id = 'suvedFilesSelect';
+	filesSelector.multiple = true;
+
+	filesSelector.addEventListener("change", fileInputHandler);
+	document.body.appendChild(filesSelector);
+
+	function fileInputHandler(e){ 
+		let reader = new FileReader();
+
+		reader.onload = e=>{
+			var ds = parseRecr(e.target.result);
+			if(document.querySelector(".surecrRepport")){
+				document.querySelector(".surecrRepport").remove();
+			}
+			document.body.append(report(ds));
+		};
+
+		reader.readAsText(e.target.files[0]);
+	}
+
+	/*
+	fetch('recr1.txt')
+		.then(responce=>responce.text())
+		.then(text=>{
+			const recr = parseRecr(text);
+			document.body.append(report(recr));
+		});
+		*/
+
+</script>
