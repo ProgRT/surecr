@@ -18,10 +18,14 @@ export function pepPlot(recr, param){
 			width: 3.5*96,
 			height: 3.1*96,
 			y: {label: param},
+			x: {label: "PEP (cmH₂O)"},
 			marks: [
-				Plot.line(recr.sumary, {x: "PEP", y: "mean" + param}),
-				Plot.dot(recr.sumary, {x: "PEP", y: "mean" + param, fill: "white", r: 20}),
-				Plot.dot(recr, {x: "PEP", y: param}),
+				Plot.boxY(recr, {
+					x: "PEProunded",
+					y: param,
+					insetLeft: 15,
+					insetRight: 15
+				})
 			]
 		});
 }
