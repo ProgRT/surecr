@@ -2,22 +2,13 @@ html {
 	background: none;
 }
 body {
-	padding: 0mm;
+	margin: 0mm;
 	box-shadow: none;
 }
-#sDiv {
-	display: flex;
-	justify-content: space-around;
-	width: 100%;
-	box-sizing: border-box;
+#repportFoot {
 	position: fixed;
 	bottom: 0px;
-	border: 1px solid black;
-	border-radius: 4mm;
-	padding-bottom: 2mm;
-	margin-top:5mm;
-	margin-left: 0px;
 }
-input {
+form, input {
 	display: none;
 }

@@ -21,8 +21,25 @@ th, td {
 	text-align: center;
 	padding: 1mm;
 	padding-right: 3mm;
-	padding-left:  3mm;
+	padding-left: 3mm;
 }
 tr:not(:last-child) {
 	border-bottom: 1px solid gainsboro;
+}
+
+form table, /*form tr:not(:last-child),*/ form thead, form tbody {
+	border: none;
+}
+
+form tr {
+	border-top: 1px solid gainsboro;
+	border-bottom: 1px solid gainsboro;
+}
+
+form td {
+	text-align: left;
+}
+
+form table {
+	width: auto;
 }

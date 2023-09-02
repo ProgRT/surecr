@@ -1,34 +1,79 @@
 <!DOCTYPE html>
+<!--meta language="fr-ca"/-->
 <link rel='stylesheet' href='table.css' />
 <link rel='stylesheet' href='main.css' />
 <link rel='stylesheet' media="print" href='print.css' />
+<link rel='stylesheet' media="screen" href='screen.css' />
+
+<form>
+	<h1>Visualisateur de données Open Lung Tool</h1>
+	<table>
+		<tr>
+			<td><label>Données :</label></td>
+			<td><input type="file" accept=".txt" multiple="true" id="suvedFilesSelect"/></td>
+		</tr>
+		<tr>
+			<td><label>Entête :</label></td>
+			<td><input type="file"  accept="image/*" multiple="true" id="headSelect" /></td>
+		</tr>
+		<tr>
+			<td><label>Pied de page :</label></td>
+			<td><input type="file" accept="image/*" multiple="true" id="footSelect" /></td>
+		</tr>
+	</table>
+
+
+</form>
+
+<div id="page" class="hidden">
+	<div id="repport"><div id="content"></div> </div>
+</div>
 
 <script type='module'>
 	import {parseRecr} from './surecr.js';
 	import {report} from "./report.js";
 
-	document.body.innerHTML = "<h1>Titration de la PEP</h1>";
-	var filesSelector = document.createElement('input');
-	filesSelector.type = 'file';
-	filesSelector.id = 'suvedFilesSelect';
-	filesSelector.multiple = true;
-
-	filesSelector.addEventListener("change", fileInputHandler);
-	document.body.appendChild(filesSelector);
+	function fileLoadedHandler(evt){
+		const dataset = parseRecr(evt.target.result);
+		document.querySelectorAll(".surecrRepport").forEach(d=>d.remove());
+		document.querySelector("#content").append(report(dataset));
+	}
 
 	function fileInputHandler(e){ 
 		let reader = new FileReader();
-
-		reader.onload = e=>{
-			var ds = parseRecr(e.target.result);
-			if(document.querySelector(".surecrRepport")){
-				document.querySelector(".surecrRepport").remove();
-			}
-			document.body.append(report(ds));
-		};
-
+		reader.onload = fileLoadedHandler;
 		reader.readAsText(e.target.files[0]);
+		document.querySelector("#page").classList.remove("hidden");
 	}
+
+	function headInputHandler(evt) {
+		var url = URL.createObjectURL(evt.target.files[0]);
+		var img = document.createElement("img");
+		img.src = url;
+		img.id = "repportHead";
+		document.querySelectorAll("#repportHead").forEach(d=>d.remove());
+		document.querySelector("#repport").prepend(img);
+		document.querySelector("#page").classList.remove("hidden");
+	}
+
+	function footInputHandler(evt) {
+		var url = URL.createObjectURL(evt.target.files[0]);
+		var img = document.createElement("img");
+		img.src = url;
+		img.id = "repportFoot";
+		document.querySelectorAll("#repportFoot").forEach(d=>d.remove());
+		document.querySelector("#repport").append(img);
+		document.querySelector("#page").classList.remove("hidden");
+	}
+
+	document.querySelector("#suvedFilesSelect")
+	.addEventListener("change", fileInputHandler);
+
+	document.querySelector("#headSelect")
+	.addEventListener("change", headInputHandler); 
+
+	document.querySelector("#footSelect")
+	.addEventListener("change", footInputHandler); 
 
 	/*
 	fetch('recr1.txt')

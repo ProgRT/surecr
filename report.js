@@ -15,7 +15,7 @@ export function report(recr){
 	grDiv.append(pepPlot(recr, "IS"));
 	rDiv.append(grDiv);
 
-	rDiv.append(signBlock());
+	//rDiv.append(signBlock());
 	return rDiv;
 }
 
