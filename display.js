@@ -1,4 +1,5 @@
 export function sumaryTable(recr){
+	console.log(recr);
 	const headers = [
 		'PEP',
 		'P<sub>motrice</sub> <sup>*</sup>',
@@ -49,7 +50,7 @@ export function sumaryTable(recr){
 }
 
 function fmtDat(row, param, precision){
-	return row['mean' + param].toFixed(precision)
-		+ ' ± '
-		+ row['sd' + param].toFixed(precision);
+		return row['mean' + param].toFixed(precision)
+			+ ' ± '
+			+ row['sd' + param].toFixed(precision);
 }

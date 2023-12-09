@@ -52,10 +52,17 @@ export function parseRecr(text) {
   var data = dataLines.slice(2, dataLines.length - 1).map(parseDataLine);
   const startTime = parseSuTime(data[0].Durée);
   data = data.map((d) => {
-    //d.Durée = parseSuTime(d.Durée, startTime);
     d.Durée = parseSuTime(d.Durée, dataDate);
     return d;
   });
+
+  // ===============================================
+  // Removing data points with one single value
+  // ===============================================
+		
+	data = data.filter(d=>{
+		return data.filter(a=>a.PEProunded == d.PEProunded).length > 1;
+	});
 
   // ===============================================
   // Creating the data sumary grouped by PEEP levels
@@ -110,11 +117,12 @@ function sumarize(dataset) {
       meanCst: mean(subset, (d) => d.Cst),
       sdCst: deviation(subset, (d) => d.Cst),
       meanPmotrice: mean(subset, (d) => d.Pmotrice),
-      sdPmotrice: deviation(subset, (d) => d.Pmotrice)
+      sdPmotrice: deviation(subset, (d) => d.Pmotrice),
+			n: subset.length
     };
   });
 
-  return sumary;
+  return sumary.filter(d=>d.n>1);
 }
 
 function getUnique(dataset, column){
