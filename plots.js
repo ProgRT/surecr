@@ -23,8 +23,8 @@ export function pepPlot(recr, param){
 				Plot.boxY(recr, {
 					x: "PEProunded",
 					y: param,
-					insetLeft: 15,
-					insetRight: 15
+					insetLeft:  10,
+					insetRight: 10
 				})
 			]
 		});

@@ -45,7 +45,7 @@ export function parseRecr(text) {
       o[fields[i]] = isNumRE.test(t[i]) ? parseFloat(t[i]) : t[i];
     }
     o.PEProunded = Math.round(o.PEP);
-    o.Cst = isNaN(o.Pmotrice) ? '"***"' : o.Cdyn;
+    o.Cst = isNaN(o.Pmotrice) ? '"***"' : o.Vci/o.Pmotrice;
     return o;
   };
 
