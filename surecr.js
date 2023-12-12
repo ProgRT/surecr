@@ -116,6 +116,8 @@ function sumarize(dataset) {
       sdIS: deviation(subset, (d) => d.IS),
       meanCst: mean(subset, (d) => d.Cst),
       sdCst: deviation(subset, (d) => d.Cst),
+      meanCdyn: mean(subset, (d) => d.Cdyn),
+      sdCdyn: deviation(subset, (d) => d.Cdyn),
       meanPmotrice: mean(subset, (d) => d.Pmotrice),
       sdPmotrice: deviation(subset, (d) => d.Pmotrice),
 			n: subset.length

@@ -7,7 +7,7 @@
    viewBox="0 0 26.991029 22.027435"
    version="1.1"
    id="svg5"
-   inkscape:version="1.3 (0e150ed6c4, 2023-07-21)"
+   inkscape:version="1.3.2 (091e20ef0f, 2023-11-25)"
    sodipodi:docname="logo.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
@@ -27,9 +27,9 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
      showgrid="true"
-     inkscape:zoom="0.5324151"
-     inkscape:cx="-120.20696"
-     inkscape:cy="-87.337869"
+     inkscape:zoom="2.5519321"
+     inkscape:cx="63.285382"
+     inkscape:cy="30.369146"
      inkscape:window-width="1920"
      inkscape:window-height="1001"
      inkscape:window-x="0"
@@ -100,36 +100,14 @@
      id="layer1"
      transform="translate(-97.158514,-68.989221)">
     <path
-       style="font-variation-settings:normal;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
+       style="font-variation-settings:normal;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833333;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;stop-color:#000000;stop-opacity:1"
        d="m 103.18749,74.083328 h 5.29167 v 5.291668 h 5.29167 v 5.291668 h 5.29167 v 0"
        id="path1" />
     <path
-       style="font-variation-settings:normal;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.529167;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker3);marker-end:url(#Triangle);stop-color:#000000;stop-opacity:1"
-       d="m 100.54166,71.437496 v 1.13356 14.741441 l 21.16667,-2e-6"
+       style="font-variation-settings:normal;opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:1.05833;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-start:url(#marker3);marker-end:url(#Triangle);stop-color:#000000;stop-opacity:1"
+       d="m 100.54166,71.437496 v 1.13356 15.270608 l 21.16667,-2e-6"
        id="path2"
        sodipodi:nodetypes="cccc" />
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52778px;line-height:130%;font-family:'Latin Modern Sans';-inkscape-font-specification:'Latin Modern Sans Bold';font-variant-caps:small-caps;writing-mode:lr-tb;fill:#000000;fill-rule:evenodd;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
-       x="96.837486"
-       y="71.4375"
-       id="text2"><tspan
-         sodipodi:role="line"
-         id="tspan2"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52778px;font-family:'Latin Modern Sans';-inkscape-font-specification:'Latin Modern Sans Bold';fill:#000000;stroke-width:0.1"
-         x="96.837486"
-         y="71.4375">P</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52778px;line-height:130%;font-family:'Latin Modern Sans';-inkscape-font-specification:'Latin Modern Sans Bold';font-variant-caps:small-caps;writing-mode:lr-tb;fill:#000000;fill-rule:evenodd;stroke-width:0.1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
-       x="121.70832"
-       y="91.016655"
-       id="text3"><tspan
-         sodipodi:role="line"
-         id="tspan3"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:3.52778px;font-family:'Latin Modern Sans';-inkscape-font-specification:'Latin Modern Sans Bold';fill:#000000;stroke-width:0.1"
-         x="121.70832"
-         y="91.016655">T</tspan></text>
   </g>
   <metadata
      id="metadata139">

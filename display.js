@@ -4,6 +4,7 @@ export function sumaryTable(recr){
 		'PEP',
 		'P<sub>motrice</sub> <sup>*</sup>',
 		'C<sub>st</sub> <sup>*</sup>',
+		'C<sub>dyn</sub> <sup>*</sup>',
 		'Ind. de stress <sup>*</sup>',
 		"Commentaire"
 	];
@@ -11,6 +12,7 @@ export function sumaryTable(recr){
 	const params = [
 			{param: 'Pmotrice', precision: 1},
 			{param: 'Cst', precision: 1},
+			{param: 'Cdyn', precision: 1},
 			{param: 'IS', precision: 2}
 		];
 
