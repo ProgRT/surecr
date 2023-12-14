@@ -22,67 +22,10 @@
 			<td><input type="file" accept="image/*" multiple="true" id="footSelect" /></td>
 		</tr>
 	</table>
-
-
 </form>
 
 <div id="page" class="hidden">
 	<div id="repport"><div id="content"></div> </div>
 </div>
 
-<script type='module'>
-	import {parseRecr} from './surecr.js';
-	import {report} from "./report.js";
-
-	function fileLoadedHandler(evt){
-		const dataset = parseRecr(evt.target.result);
-		document.querySelectorAll(".surecrRepport").forEach(d=>d.remove());
-		document.querySelector("#content").append(report(dataset));
-	}
-
-	function fileInputHandler(e){ 
-		let reader = new FileReader();
-		reader.onload = fileLoadedHandler;
-		reader.readAsText(e.target.files[0]);
-		document.querySelector("#page").classList.remove("hidden");
-	}
-
-	function headInputHandler(evt) {
-		var url = URL.createObjectURL(evt.target.files[0]);
-		var img = document.createElement("img");
-		img.src = url;
-		img.id = "repportHead";
-		document.querySelectorAll("#repportHead").forEach(d=>d.remove());
-		document.querySelector("#repport").prepend(img);
-		document.querySelector("#page").classList.remove("hidden");
-	}
-
-	function footInputHandler(evt) {
-		var url = URL.createObjectURL(evt.target.files[0]);
-		var img = document.createElement("img");
-		img.src = url;
-		img.id = "repportFoot";
-		document.querySelectorAll("#repportFoot").forEach(d=>d.remove());
-		document.querySelector("#repport").append(img);
-		document.querySelector("#page").classList.remove("hidden");
-	}
-
-	document.querySelector("#suvedFilesSelect")
-	.addEventListener("change", fileInputHandler);
-
-	document.querySelector("#headSelect")
-	.addEventListener("change", headInputHandler); 
-
-	document.querySelector("#footSelect")
-	.addEventListener("change", footInputHandler); 
-
-	/*
-	fetch('recr1.txt')
-		.then(responce=>responce.text())
-		.then(text=>{
-			const recr = parseRecr(text);
-			document.body.append(report(recr));
-		});
-		*/
-
-</script>
+<script type='module' src='app.js'> </script>

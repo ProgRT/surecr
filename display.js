@@ -1,53 +1,57 @@
-export function sumaryTable(recr){
-	console.log(recr);
-	const headers = [
-		'PEP',
-		'P<sub>motrice</sub> <sup>*</sup>',
-		'C<sub>st</sub> <sup>*</sup>',
-		'C<sub>dyn</sub> <sup>*</sup>',
-		'Ind. de stress <sup>*</sup>',
-		"Commentaire"
-	];
+export function sumaryTable(recr, conf){
 
-	const params = [
-			{param: 'Pmotrice', precision: 1},
-			{param: 'Cst', precision: 1},
-			{param: 'Cdyn', precision: 1},
-			{param: 'IS', precision: 2}
-		];
+	const defaults = {
+		tblCaptText: "* Valeur ± écart type",
+		params : [
+			{param: 'PEP'},
+			{param: 'Pmotrice', precision: 1, title: 'P<sub>motrice</sub> <sup>*</sup>'},
+			{param: 'Cst', precision: 1, title: 'C<sub>st</sub> <sup>*</sup>'},
+			{param: 'Cdyn', precision: 1, title: 'C<sub>dyn</sub> <sup>*</sup>'},
+			{param: 'IS', precision: 2, title: 'Ind. de stress <sup>*</sup>'},
+			{title: "Commentaire"}
+		],
+	};
+
+	if (conf && conf.params) { var params = conf.params; }
+	else {var params = defaults.params}
+
+	if (conf && "tblCaptText" in conf) {
+		var tblCaptText = conf.tblCaptText
+		console.log("tblCaptText form conf");
+	}
+	else {var tblCaptText = defaults.tblCaptText}
 
 	var table = document.createElement("table");
 	var tblHead = document.createElement("thead");
 	table.append(tblHead);
 
-	for(var header of headers){
+	for(var p of params){
 		let th = document.createElement('th');
-		th.innerHTML = header;
+		th.innerHTML = p.title ? p.title : p.param;
 		tblHead.append(th);
 	}
 
 	var tblBody = document.createElement("tbody");
 	for(var row of recr.sumary){
 		var tr = document.createElement('tr');
-		var td = document.createElement('td');
-		td.textContent = row.PEP;
-		tr.append(td);
 
-		for(var header of params){
+		for(var p of params){
 			var td = document.createElement('td');
-			td.textContent = fmtDat(row, header.param, header.precision);
+			if(p.param){
+				td.textContent = p.precision ? fmtDat(row, p.param, p.precision) : row[p.param];
+			}
 			tr.append(td);
 		}
-		var td = document.createElement('td');
-		tr.append(td);
 
 		tblBody.append(tr);
 	}
 	table.append(tblBody);
 
-	var cpt = document.createElement("caption");
-	cpt.textContent = "* Valeur ± écart type";
-	table.append(cpt);
+	if(tblCaptText != ""){
+		var cpt = document.createElement("caption");
+		cpt.textContent = tblCaptText;
+		table.append(cpt);
+	}
 	return table;
 }
 

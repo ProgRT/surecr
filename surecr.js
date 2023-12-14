@@ -85,10 +85,7 @@ export function parseRecr(text) {
 function parseSuTime(str, d){
   var h, m, s, time;
   [h, m, s] = str.split(":");
-	/*
-  time = 3600 * h + 60 * m + 1 * s;
-  time -= isNaN(starttime) ? 0 : starttime;
-	*/
+
 	time = new Date(d);
 	time.setHours(h);
 	time.setMinutes(m);
@@ -103,25 +100,27 @@ function parseSuDate(string) {
   [j, M, a] = dString.split("/");
   [h, m, s] = tString.split(":");
   return new Date(`20${a}/${M}/${j} ${h}:${m}:${s}`);
-  //return new Date(`20${a}/${M}/${j}`);
 }
 
 function sumarize(dataset) {
+	const sumaryVariables = [
+			"Fin PI", "Pmotrice",
+			"Vci", "Vce",
+			"Cst", "Cdyn",
+			"FR", "IS",
+	];
+
   var peps = getUnique(dataset, "PEProunded");
   var sumary = peps.map(p => {
     var subset = dataset.filter((d) => d.PEProunded == p);
-    return {
-      PEP: p,
-      meanIS: mean(subset, d => d.IS),
-      sdIS: deviation(subset, (d) => d.IS),
-      meanCst: mean(subset, (d) => d.Cst),
-      sdCst: deviation(subset, (d) => d.Cst),
-      meanCdyn: mean(subset, (d) => d.Cdyn),
-      sdCdyn: deviation(subset, (d) => d.Cdyn),
-      meanPmotrice: mean(subset, (d) => d.Pmotrice),
-      sdPmotrice: deviation(subset, (d) => d.Pmotrice),
-			n: subset.length
-    };
+		var row = {PEP: p, n: subset.length};
+
+		for (let c of sumaryVariables) {
+			row["mean"+c] = mean(subset, d => d[c]);
+			row["sd"+c] = deviation(subset, d => d[c]);
+		}
+
+		return row;
   });
 
   return sumary.filter(d=>d.n>1);

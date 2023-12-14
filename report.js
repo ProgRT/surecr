@@ -1,18 +1,36 @@
 import {pepPlot, timePlot} from './plots.js';
 import {sumaryTable} from './display.js';
 
-export function report(recr){
+export function report(recr, conf){
+	// Éléments à configurer:
+	// - Colones du tableau
+	// - graphiques *temps*
+	// - graphiques *PEP*
+	
 	var rDiv = document.createElement("article");
 	rDiv.className = "surecrRepport";
 	rDiv.append(datePar(recr.date));
 
-	rDiv.append(sumaryTable(recr));
+	//console.log(conf.table);
+	rDiv.append(sumaryTable(recr, conf.table));
 
 	const grDiv = document.createElement("div");
 	grDiv.id = "grDiv";
-	grDiv.append(timePlot(recr, "PEP"));
-	grDiv.append(pepPlot(recr, "Cst"));
-	grDiv.append(pepPlot(recr, "IS"));
+
+
+	//grDiv.append(timePlot(recr, "PEP"));
+	if(conf.timeSeries){
+		for(var param of conf.timeSeries){
+			grDiv.append(timePlot(recr, param));
+		}
+	}
+
+	if(conf.timeSeries){
+		for(var param of conf.peepSeries){
+			grDiv.append(pepPlot(recr, param));
+		}
+	}
+
 	rDiv.append(grDiv);
 
 	//rDiv.append(signBlock());
